@@ -1,0 +1,113 @@
+{
+    "author": "Ben",
+    "dependencies": {
+        "pebble-clay": "^1.0.1"
+    },
+    "keywords": [],
+    "name": "day-night-time-2d-3d",
+    "pebble": {
+        "capabilities": [
+            "configurable"
+        ],
+        "displayName": "Day and Night Time Face",
+        "enableMultiJS": true,
+        "messageKeys": [
+            "BackgroundColor",
+            "ForegroundColor",
+            "SecondTick",
+            "Animations",
+            "DayMap",
+            "NightMap",
+            "LongitudeOffset",
+            "CenterFocus",
+            "DayLand",
+            "DayWater",
+            "DayIce",
+            "NightLand",
+            "NightWater",
+            "NightIce",
+            "Theme",
+            "TimeFont",
+            "DateFont",
+            "LatitudeOffset",
+            "MapProjection"
+        ],
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "file": "images/day_03_simple.png",
+                    "name": "DAY_03_SIMPLE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/3_color_ultra_refined.png",
+                    "name": "3_Color_Map",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "characterRegex": "[0-9:.]",
+                    "file": "fonts/font_BarlowSemiCondensed-Bold.ttf",
+                    "name": "FONT_Barlow_SemiCondensed_Bold_62",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[0-9:.]",
+                    "file": "fonts/font_Oswald-Bold.ttf",
+                    "name": "FONT_OSWALD_BOLD_54",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[0-9:.]",
+                    "file": "fonts/font_Barlow-SemiBold.ttf",
+                    "name": "FONT_Barlow_Semi_Bold_62",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "images/day_01_charlie.png",
+                    "name": "DAY_01_CHARLIE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/night_02_clean.png",
+                    "name": "NIGHT_02_CLEAN",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/world.png",
+                    "name": "WORLD",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/night_01_dither.png",
+                    "name": "NIGHT_01_DITHER",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/day_02_blue_marble.png",
+                    "name": "DAY_02_BLUE_MARBLE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "emery"
+        ],
+        "uuid": "b606ed92-1025-4a03-be70-5a87c53cdbdc",
+        "watchapp": {
+            "watchface": true
+        }
+    },
+    "version": "1.0.1"
+}
