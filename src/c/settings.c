@@ -81,6 +81,7 @@ void settings_save(void) {
   };
   persist_write_data(SETTINGS_KEY, &saved, sizeof(saved));
 }
+
 static bool tuple_int(Tuple *t, int *out) {
   if (!t) return false;
   if (t->type == TUPLE_CSTRING) {
@@ -91,12 +92,26 @@ static bool tuple_int(Tuple *t, int *out) {
     *out = (int)v;
     return true;
   }
-  if (t->type == TUPLE_INT || t->type == TUPLE_UINT) {
-    *out = t->value->int32;
-    return true;
+  if (t->type == TUPLE_INT) {
+    switch (t->length) {
+      case 1: *out = (int)t->value->int8;  return true;
+      case 2: *out = (int)t->value->int16; return true;
+      case 4: *out = (int)t->value->int32; return true;
+      default: return false;
+    }
+  }
+  if (t->type == TUPLE_UINT) {
+    switch (t->length) {
+      case 1: *out = (int)t->value->uint8;  return true;
+      case 2: *out = (int)t->value->uint16; return true;
+      case 4: *out = (int)t->value->uint32; return true;
+      default: return false;
+    }
   }
   return false;
 }
+
+
 #define PARSE_INT(KEY, FIELD) do { \
   int value; \
   if (tuple_int(dict_find(iter, KEY), &value)) { \
@@ -137,11 +152,7 @@ bool settings_update_from_dict(DictionaryIterator *iter) {
       (projection_value == 0 || projection_value == 1)) {
     s_settings.MapProjection = projection_value;
     changed = true;
-    APP_LOG(APP_LOG_LEVEL_INFO, "EARTH RX projection=%d key=%lu",
-            projection_value, (unsigned long)MESSAGE_KEY_MapProjection);
   } else {
-    APP_LOG(APP_LOG_LEVEL_INFO, "EARTH RX projection missing/invalid key=%lu",
-            (unsigned long)MESSAGE_KEY_MapProjection);
   }
   PARSE_STRING(MESSAGE_KEY_TimeFont, TimeFont);
   PARSE_STRING(MESSAGE_KEY_DateFont, DateFont);

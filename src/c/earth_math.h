@@ -90,3 +90,4 @@ static inline void earth_sun(time_t now, float *lat, float *lon) {
   *lat = decl/EARTH_RAD;
   *lon = earth_wrap((720.0f-hour*60.0f-eq)/4.0f);
 }
+

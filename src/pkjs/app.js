@@ -69,3 +69,4 @@ Pebble.addEventListener('webviewclosed', function(e) {
     console.log('EARTH PHONE ERROR ' + err.message);
   }
 });
+
