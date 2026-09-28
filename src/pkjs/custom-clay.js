@@ -3,60 +3,80 @@ module.exports = function(minified) {
   var isApplyingTheme = false; 
 
   var themes = {
+    // NEW: Inverted dark silhouette continent theme (Crispest possible on Pebble)
     radar: {
       BackgroundColor: '0x000000', ForegroundColor: '0x55FF55',
       DayLand: '0x000000', DayWater: '0x00FFAA', DayIce: '0xFFFFFF',
       NightLand: '0x005500', NightWater: '0x005555', NightIce: '0x00AA55',
       TimeFont: 'leco', DateFont: 'small'
     },
+    // NEW: Warm sepia/parchment tone
     sepia: {
       BackgroundColor: '0x550000', ForegroundColor: '0xFFFFAA',
       DayLand: '0xFFFFAA', DayWater: '0xAA5500', DayIce: '0xFFFFFF',
       NightLand: '0xFFAA55', NightWater: '0x550000', NightIce: '0xAA5555',
       TimeFont: 'serif', DateFont: 'serif'
     },
+    // NEW: High contrast solar gold/black
     solar: {
       BackgroundColor: '0x000000', ForegroundColor: '0xFFFF00',
       DayLand: '0xFFFF55', DayWater: '0xAA0000', DayIce: '0xFFFFFF',
       NightLand: '0xFFAA00', NightWater: '0x000000', NightIce: '0xAA5555',
       TimeFont: 'roboto', DateFont: 'gothic'
     },
+    // RETUNED: Replaced low-contrast Green/Blue with clean luminance hierarchy
     classic: {
       BackgroundColor: '0x000000', ForegroundColor: '0xFFFFFF',
       DayLand: '0x55FF55', DayWater: '0x0055AA', DayIce: '0xFFFFFF',
       NightLand: '0x00AA00', NightWater: '0x000055', NightIce: '0x55AAAA',
       TimeFont: 'leco', DateFont: 'bitham'
     },
+    // NEW: Crimson silhouette — bright red land, black sea
     redHC: {
       BackgroundColor: '0x000000', ForegroundColor: '0xFF5555',
       DayLand: '0xFF5555', DayWater: '0x000000', DayIce: '0xFFFFFF',
       NightLand: '0xFF5555', NightWater: '0x550000', NightIce: '0xFFFFFF',
       TimeFont: 'leco', DateFont: 'bitham'
     },
+
+    // NEW: Amber / ember — gold land, maroon sea
     orangeHC: {
       BackgroundColor: '0x000000', ForegroundColor: '0xFFAA00',
       DayLand: '0xFFAA00', DayWater: '0x000000', DayIce: '0xFFFFFF',
       NightLand: '0xFF5500', NightWater: '0x550000', NightIce: '0xFFFFFF',
       TimeFont: 'leco', DateFont: 'bitham'
     },
+
+    // NEW: Solar — yellow land, deep navy sea (max separation)
     yellowHC: {
       BackgroundColor: '0x000000', ForegroundColor: '0xFFFF55',
       DayLand: '0xFFFF55', DayWater: '0x000055', DayIce: '0xFFFFFF',
       NightLand: '0xAAAA00', NightWater: '0x000000', NightIce: '0xFFFFAA',
       TimeFont: 'leco', DateFont: 'bitham'
     },
+
+    // NEW: Verdant — mint land, navy sea
     greenHC: {
       BackgroundColor: '0x000000', ForegroundColor: '0x55FF55',
       DayLand: '0x55FF55', DayWater: '0x000055', DayIce: '0xFFFFFF',
       NightLand: '0x00AA00', NightWater: '0x000000', NightIce: '0xFFFFFF',
       TimeFont: 'leco', DateFont: 'bitham'
     },
+
+    // NEW: Azure — pale blue land, near-black navy sea
+    //      (NEVER use 0x0000FF here — it is L=0.072, CR 1.44 on black)
     blueHC: {
       BackgroundColor: '0x000000', ForegroundColor: '0x55FFFF',
       DayLand: '0x55AAFF', DayWater: '0x000055', DayIce: '0xFFFFFF',
       NightLand: '0x00AAFF', NightWater: '0x000000', NightIce: '0xFFFFFF',
       TimeFont: 'leco', DateFont: 'bitham'
-    },
+    },    
+//     classic: {
+//       BackgroundColor: '0x000000', ForegroundColor: '0xFFFFFF',
+//       DayLand: '0x00FF00', DayWater: '0x0055FF', DayIce: '0xFFFFFF',
+//       NightLand: '0x005500', NightWater: '0x000055', NightIce: '0x555555',
+//       TimeFont: 'leco', DateFont: 'bitham'
+//     },
     terminal: {
       BackgroundColor: '0x000000', ForegroundColor: '0x00FF00',
       DayLand: '0x00FF00', DayWater: '0x000000', DayIce: '0x00AA00',
@@ -87,80 +107,73 @@ module.exports = function(minified) {
       TimeFont: 'leco', DateFont: 'gothic'
     },
     miami: {
-      BackgroundColor: '0x000055', ForegroundColor: '0x55FFFF',    
-      DayLand: '0xFF55AA', DayWater: '0x00AAFF', DayIce: '0xFFFFFF',    
-      NightLand: '0xAA0055', NightWater: '0x000055', NightIce: '0xAA55FF',
+      BackgroundColor: '0x000055',ForegroundColor: '0x55FFFF',    
+      DayLand: '0xFF55AA',DayWater: '0x00AAFF',DayIce: '0xFFFFFF',    
+      NightLand: '0xAA0055',NightWater: '0x000055',NightIce: '0xAA55FF',
       TimeFont: 'leco', DateFont: 'gothic'
     },    
     aurora: {
-      BackgroundColor: '0x000055', ForegroundColor: '0xAAFFAA',    
-      DayLand: '0x55FFAA', DayWater: '0x0055AA', DayIce: '0xFFFFFF',    
-      NightLand: '0x00AA55', NightWater: '0x000000', NightIce: '0x5555AA',
+      BackgroundColor: '0x000055',ForegroundColor: '0xAAFFAA',    
+      DayLand: '0x55FFAA',DayWater: '0x0055AA',DayIce: '0xFFFFFF',    
+      NightLand: '0x00AA55',NightWater: '0x000000',NightIce: '0x5555AA',
       TimeFont: 'leco', DateFont: 'gothic'
     },    
     cherry: {
-      BackgroundColor: '0x550000', ForegroundColor: '0xFFFFAA',
-      DayLand: '0xFF5555', DayWater: '0x0055AA', DayIce: '0xFFFFAA',    
-      NightLand: '0xAA0000', NightWater: '0x000000', NightIce: '0x555555'
+      BackgroundColor: '0x550000',ForegroundColor: '0xFFFFAA',
+      DayLand: '0xFF5555',DayWater: '0x0055AA',DayIce: '0xFFFFAA',    
+      NightLand: '0xAA0000',NightWater: '0x000000',NightIce: '0x555555'
     },    
     candy: {
-      BackgroundColor: '0x550055', ForegroundColor: '0xFFFFFF',    
-      DayLand: '0xFFAAAA', DayWater: '0x55FFFF', DayIce: '0xFFFFFF',    
-      NightLand: '0xAA55AA', NightWater: '0x0055AA', NightIce: '0xAA55FF'
+      BackgroundColor: '0x550055',ForegroundColor: '0xFFFFFF',    
+      DayLand: '0xFFAAAA',DayWater: '0x55FFFF',DayIce: '0xFFFFFF',    
+      NightLand: '0xAA55AA',NightWater: '0x0055AA',NightIce: '0xAA55FF'
     },    
     gold: {
-      BackgroundColor: '0x000000', ForegroundColor: '0xFFFF55',    
-      DayLand: '0xFFAA00', DayWater: '0x005555', DayIce: '0xFFFFAA',    
-      NightLand: '0xAA5500', NightWater: '0x000000', NightIce: '0x555555',
+      BackgroundColor: '0x000000',ForegroundColor: '0xFFFF55',    
+      DayLand: '0xFFAA00',DayWater: '0x005555',DayIce: '0xFFFFAA',    
+      NightLand: '0xAA5500',NightWater: '0x000000',NightIce: '0x555555',
       TimeFont: 'serif', DateFont: 'serif'
     },    
     arctic: {
-      BackgroundColor: '0x000055', ForegroundColor: '0xFFFFFF',    
-      DayLand: '0xAAFFFF', DayWater: '0x0055FF', DayIce: '0xFFFFFF',    
-      NightLand: '0x0055AA', NightWater: '0x000055', NightIce: '0xAAAAFF',
+      BackgroundColor: '0x000055',ForegroundColor: '0xFFFFFF',    
+      DayLand: '0xAAFFFF',DayWater: '0x0055FF',DayIce: '0xFFFFFF',    
+      NightLand: '0x0055AA',NightWater: '0x000055',NightIce: '0xAAAAFF',
       TimeFont: 'leco', DateFont: 'gothic'
     },    
     jungle: {
-      BackgroundColor: '0x000000', ForegroundColor: '0xAAFF55',    
-      DayLand: '0x55FF55', DayWater: '0x0055AA', DayIce: '0xFFFFFF',    
-      NightLand: '0x005500', NightWater: '0x000000', NightIce: '0x555555',
+      BackgroundColor: '0x000000',ForegroundColor: '0xAAFF55',    
+      DayLand: '0x55FF55',DayWater: '0x0055AA',DayIce: '0xFFFFFF',    
+      NightLand: '0x005500',NightWater: '0x000000',NightIce: '0x555555',
       TimeFont: 'leco', DateFont: 'gothic'
     },    
     arcade: {
-      BackgroundColor: '0x000000', ForegroundColor: '0x55FF55',    
-      DayLand: '0xFFFF00', DayWater: '0x0055FF', DayIce: '0xFFFFFF',    
-      NightLand: '0xFF0055', NightWater: '0x000055', NightIce: '0xAA00FF',
+      BackgroundColor: '0x000000',ForegroundColor: '0x55FF55',    
+      DayLand: '0xFFFF00',DayWater: '0x0055FF',DayIce: '0xFFFFFF',    
+      NightLand: '0xFF0055',NightWater: '0x000055',NightIce: '0xAA00FF',
       TimeFont: 'leco', DateFont: 'gothic'
     },    
     atlas: {
-      BackgroundColor: '0xAA5500', ForegroundColor: '0xFFFFAA',    
-      DayLand: '0xFFAA55', DayWater: '0x0055AA', DayIce: '0xFFFFAA',    
-      NightLand: '0x555500', NightWater: '0x000055', NightIce: '0xAAAA55',
+      BackgroundColor: '0xAA5500',ForegroundColor: '0xFFFFAA',    
+      DayLand: '0xFFAA55',DayWater: '0x0055AA',DayIce: '0xFFFFAA',    
+      NightLand: '0x555500',NightWater: '0x000055',NightIce: '0xAAAA55',
       TimeFont: 'leco', DateFont: 'serif'
     },
     tropical: {
-      BackgroundColor: '0x005555', ForegroundColor: '0xFFFF55',    
-      DayLand: '0xFF5555', DayWater: '0x00AAFF', DayIce: '0xFFFFFF',    
-      NightLand: '0x55AA00', NightWater: '0x000055', NightIce: '0x5555AA',
+      BackgroundColor: '0x005555',ForegroundColor: '0xFFFF55',    
+      DayLand: '0xFF5555',DayWater: '0x00AAFF',DayIce: '0xFFFFFF',    
+      NightLand: '0x55AA00',NightWater: '0x000055',NightIce: '0x5555AA',
       TimeFont: 'leco', DateFont: 'gothic'
     }
   };
 
   function toggleVisibility() {
-    var isFixedFocus = String(clayConfig.getItemByMessageKey('CenterFocus').get()) === '0';
-    var is3D = String(clayConfig.getItemByMessageKey('MapProjection').get()) === '1';
-
-    // Show manual adjustments only when Focus is Fixed Location
-    if (isFixedFocus) {
+    var projection = clayConfig.getItemByMessageKey('MapProjection');
+    var latitude = clayConfig.getItemByMessageKey('LatitudeOffset');
+    if (String(projection.get()) === '1') latitude.show();
+    else latitude.hide();
+    if (String(clayConfig.getItemByMessageKey('CenterFocus').get()) === '0') {
       clayConfig.getItemByMessageKey('LongitudeOffset').show();
-      if (is3D) {
-        clayConfig.getItemByMessageKey('LatitudeOffset').show();
-      } else {
-        clayConfig.getItemByMessageKey('LatitudeOffset').hide();
-      }
     } else {
-      // Hide both Latitude and Longitude when centering on Day or Night
-      clayConfig.getItemByMessageKey('LatitudeOffset').hide();
       clayConfig.getItemByMessageKey('LongitudeOffset').hide();
     }
 
